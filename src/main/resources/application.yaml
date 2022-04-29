@@ -1,0 +1,43 @@
+spring:
+  profiles:
+    active: chaos-monkey
+  jpa:
+    hibernate:
+      ddl-auto: update
+#    properties:
+#      hibernate:
+#        format_sql: true
+#    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/codetest
+    username: codetest
+    password: codetest
+#    url: jdbc:h2:mem:/codetest
+#    username: sa
+#    password: sa
+
+management:
+  endpoint:
+    chaosmonkey:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - info
+          - chaosmonkey
+
+chaos:
+  monkey:
+    watcher:
+      repository: true
+#      controller: true
+#    assaults:
+#      level: 3
+#      latency-active: true
+#      latency-range-start: 1000
+#      latency-range-end: 3000
+#      watched-custom-services:
+#        - com.example.chaos.monkey.chaosdemo.controller.HelloController.sayHello
+#        - com.example.chaos.monkey.chaosdemo.service.HelloService

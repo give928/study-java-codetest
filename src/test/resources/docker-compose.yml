@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  codetest-db:
+    image: postgres
+    ports:
+      - 5432
+    environment:
+      POSTGRES_PASSWORD: codetest
+      POSTGRES_USER: codetest
+      POSTGRES_DB: codetest
